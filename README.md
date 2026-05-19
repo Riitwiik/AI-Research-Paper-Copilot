@@ -153,6 +153,17 @@ This improves retrieval precision significantly.
             └────────────────────┘
 ```
 
+# 🖥️ Application Preview
+
+## 📊 Dashboard
+
+![Dashboard](Dashboard.png)
+
+---
+
+
+![Dashboard 2](Dashboard2.png)
+
 
 
 
