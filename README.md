@@ -165,5 +165,10 @@ This improves retrieval precision significantly.
 ![Dashboard 2](Dashboard2.png)
 
 
+## 📥 Paper Ingestion 
+
+![Ingest Paper](ingest paper.png)
+
+
 
 
