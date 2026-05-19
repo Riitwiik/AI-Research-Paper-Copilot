@@ -195,6 +195,28 @@ This improves retrieval precision significantly.
 
 ![Literature Review 3](literature-review3.png)
 
+### 📄 Paper Selection Interface
+
+![Compare Papers 1](compare-paper1.png)
+
+---
+
+### 🧠 Comparative Analysis Generation
+
+![Compare Papers 2](compare-paper2.png)
+
+---
+
+### 📊 Research Comparison Output
+
+![Compare Papers 3](compare-paper-3.png)
+
+---
+
+### 🔬 Detailed Comparative Insights
+
+![Compare Papers 4](compare-paper4.png)
+
 
 
 
