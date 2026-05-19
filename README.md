@@ -167,7 +167,7 @@ This improves retrieval precision significantly.
 
 ## 📥 Paper Ingestion 
 
-![Ingest Paper](ingest paper.png)
+![Ingest Paper](ingestpaper.png)
 
 
 
