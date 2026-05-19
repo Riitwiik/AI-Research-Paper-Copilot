@@ -4,11 +4,11 @@
 
 https://ai-research-paper-copilot-wmu8cjdd3fc3kt8ryogn4c.streamlit.app/
 
-🔬 AI Research Copilot
+##🔬 AI Research Copilot
 
 A production-grade multi-paper RAG system for research intelligence, citation-grounded reasoning, and advanced hybrid retrieval — engineered to demonstrate real-world GenAI architecture beyond toy demos.
 
-🚀 Why This Project Stands Out
+##🚀 Why This Project Stands Out
 
 Most GenAI projects stop at:
 
@@ -33,7 +33,7 @@ Optimized for low-cost deployment
 
 This is not just a demo app — it is a miniature research intelligence platform.
 
-✨ Features
+##✨ Features
 📄 Multi-Paper Research Intelligence
 
 Ingest multiple research papers from:
@@ -43,7 +43,7 @@ User-uploaded PDFs
 
 The system creates a searchable research knowledge base.
 
-🧠 Advanced Hybrid Retrieval
+##🧠 Advanced Hybrid Retrieval
 
 Instead of relying only on embeddings, the system combines:
 
@@ -56,7 +56,7 @@ Reciprocal Rank Fusion (RRF)
 
 This significantly improves retrieval quality compared to naive vector-only pipelines.
 
-📚 Citation-Grounded Answers
+##📚 Citation-Grounded Answers
 
 Every generated answer is grounded in retrieved evidence.
 
@@ -69,7 +69,7 @@ Forces grounded generation through structured prompting
 
 This reduces hallucinations and improves trustworthiness.
 
-🧾 Automated Literature Review Generation
+##🧾 Automated Literature Review Generation
 
 Generate structured literature reviews across multiple papers:
 
@@ -77,7 +77,7 @@ Synthesizes findings
 Compares approaches
 Identifies research gaps
 Produces academic-style summaries
-⚖️ Research Paper Comparison
+##⚖️ Research Paper Comparison
 
 Compare papers by:
 
@@ -103,7 +103,7 @@ Metadata-aware chunks
 
 This improves retrieval precision significantly.
 
-# 🏗️ System Architecture
+## 🏗️ System Architecture
 
 ```text
                 ┌────────────────────┐
@@ -152,41 +152,3 @@ This improves retrieval precision significantly.
             └────────────────────┘
 ```
 
-🏗️ System Architecture
-                ┌────────────────────┐
-                │   Research Papers   │
-                │ (arXiv / PDFs)      │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │   PDF Extraction    │
-                │     PyMuPDF         │
-                └─────────┬──────────┘
-                          │
-                          ▼
-                ┌────────────────────┐
-                │   Smart Chunking    │
-                │ Section-aware RAG   │
-                └─────────┬──────────┘
-                          │
-            ┌─────────────┴─────────────┐
-            ▼                           ▼
-   ┌────────────────┐        ┌────────────────┐
-   │ Dense Embedding │        │ BM25 Indexing │
-   │ SentenceTransf. │        │ Sparse Search │
-   └────────┬───────┘        └────────┬───────┘
-            ▼                         ▼
-      ┌────────────────────────────────────┐
-      │      Reciprocal Rank Fusion         │
-      │              (RRF)                  │
-      └────────────────┬───────────────────┘
-                       ▼
-            ┌────────────────────┐
-            │ Context Assembly    │
-            │ + Citations         │
-            └─────────┬──────────┘
-                      ▼
-            ┌────────────────────┐
-            │ Groq LLM Generation │
-            └────────────────────┘
