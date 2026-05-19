@@ -170,5 +170,16 @@ This improves retrieval precision significantly.
 ![Ingest Paper](ingest-paper.png)
 
 
+## 🔍 Research Q&A Interface
+
+![Ask Questions 1](ask-question1.png)
+
+---
+
+## 📑 Citation-Grounded Responses
+
+![Ask Questions 2](ask-question2.png)
+
+
 
 
