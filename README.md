@@ -1,4 +1,7 @@
 # AI-Research-Paper-Copilot
+
+## 🚀 Live Demo
+
 https://ai-research-paper-copilot-wmu8cjdd3fc3kt8ryogn4c.streamlit.app/
 
 🔬 AI Research Copilot
@@ -99,3 +102,42 @@ Citation-preserving boundaries
 Metadata-aware chunks
 
 This improves retrieval precision significantly.
+
+🏗️ System Architecture
+                ┌────────────────────┐
+                │   Research Papers   │
+                │ (arXiv / PDFs)      │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │   PDF Extraction    │
+                │     PyMuPDF         │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │   Smart Chunking    │
+                │ Section-aware RAG   │
+                └─────────┬──────────┘
+                          │
+            ┌─────────────┴─────────────┐
+            ▼                           ▼
+   ┌────────────────┐        ┌────────────────┐
+   │ Dense Embedding │        │ BM25 Indexing │
+   │ SentenceTransf. │        │ Sparse Search │
+   └────────┬───────┘        └────────┬───────┘
+            ▼                         ▼
+      ┌────────────────────────────────────┐
+      │      Reciprocal Rank Fusion         │
+      │              (RRF)                  │
+      └────────────────┬───────────────────┘
+                       ▼
+            ┌────────────────────┐
+            │ Context Assembly    │
+            │ + Citations         │
+            └─────────┬──────────┘
+                      ▼
+            ┌────────────────────┐
+            │ Groq LLM Generation │
+            └────────────────────┘
