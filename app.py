@@ -1,16 +1,3 @@
-"""
-AI Research Copilot — A production-style GenAI project for Streamlit Cloud.
-
-Demonstrates: Advanced RAG, Hybrid Retrieval, Citation-Grounded Answers,
-              Smart Chunking, and Clean GenAI Engineering.
-
-Tech: Streamlit | Groq (llama-3.1-8b-instant) | sentence-transformers |
-      Qdrant (local) | SQLite | PyMuPDF | BM25 + Dense + RRF
-"""
-
-# ============================================================================
-# 1. CONFIG
-# ============================================================================
 
 import os
 import re
@@ -28,18 +15,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# ---------------------------------------------------------------------------
-# Logging
-# ---------------------------------------------------------------------------
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
 )
 logger = logging.getLogger("research_copilot")
 
-# ---------------------------------------------------------------------------
-# Pydantic-style config (kept lightweight with dataclasses + validation)
-# ---------------------------------------------------------------------------
 @dataclass
 class AppConfig:
     """Centralised configuration with sensible defaults."""
@@ -73,9 +54,6 @@ def get_config() -> AppConfig:
     return cfg
 
 
-# ============================================================================
-# 2. DATABASE  (SQLite metadata store)
-# ============================================================================
 
 class MetadataDB:
     """Lightweight SQLite wrapper for paper and chunk metadata."""
@@ -208,9 +186,6 @@ def get_db() -> MetadataDB:
     return MetadataDB(get_config().sqlite_path)
 
 
-# ============================================================================
-# 3. VECTOR STORE  (Qdrant local mode)
-# ============================================================================
 
 class VectorStore:
     """Thin wrapper around Qdrant local client for dense vector storage."""
@@ -325,9 +300,6 @@ def get_vector_store() -> VectorStore:
     return VectorStore(get_config().qdrant_path)
 
 
-# ============================================================================
-# 4. PDF PROCESSING  (PyMuPDF + arXiv download)
-# ============================================================================
 
 import urllib.request
 import urllib.error
@@ -513,9 +485,6 @@ def extract_text_from_pdf(pdf_path: str) -> list[dict]:
     return pages
 
 
-# ============================================================================
-# 5. CHUNKING  (section-aware + overlap + citation preservation)
-# ============================================================================
 
 # Common section headers in CS / ML papers
 _SECTION_PATTERNS = [
@@ -644,9 +613,6 @@ def _flush_chunk(
     )
 
 
-# ============================================================================
-# 6. EMBEDDINGS  (sentence-transformers, lazy-loaded)
-# ============================================================================
 
 @st.cache_resource
 def get_embedding_model():
@@ -666,9 +632,6 @@ def embed_texts(texts: list[str], batch_size: int = 32) -> list[list[float]]:
     return embeddings.tolist()
 
 
-# ============================================================================
-# 7. RETRIEVAL  (BM25 + Dense + Reciprocal Rank Fusion)
-# ============================================================================
 
 class HybridRetriever:
     """BM25 + Dense retrieval with Reciprocal Rank Fusion."""
@@ -777,9 +740,6 @@ def get_retriever() -> HybridRetriever:
     return retriever
 
 
-# ============================================================================
-# LLM CALLS  (Groq only)
-# ============================================================================
 
 def call_groq(system_prompt: str, user_prompt: str, max_tokens: int = 1024) -> str:
     """Call Groq chat completions. Returns the assistant message text."""
@@ -806,9 +766,6 @@ def call_groq(system_prompt: str, user_prompt: str, max_tokens: int = 1024) -> s
         return f"❌ Groq API error: {exc}"
 
 
-# ============================================================================
-# INGESTION PIPELINE  (ties PDF → chunks → embeddings → stores)
-# ============================================================================
 
 def ingest_arxiv_paper(arxiv_id: str) -> Optional[str]:
     """End-to-end: download arXiv PDF → extract → chunk → embed → store.
@@ -968,9 +925,6 @@ def ingest_uploaded_pdf(uploaded_file, paper_title: str = "") -> Optional[str]:
     return paper_id
 
 
-# ============================================================================
-# 8. STREAMLIT UI
-# ============================================================================
 
 def _init_session_state() -> None:
     """Set defaults for session-state keys."""
@@ -1330,9 +1284,6 @@ def page_compare() -> None:
         st.markdown(comparison)
 
 
-# ============================================================================
-# 9. STARTUP
-# ============================================================================
 
 def main() -> None:
     """Application entry point."""
