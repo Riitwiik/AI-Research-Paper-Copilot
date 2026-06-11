@@ -62,7 +62,7 @@ class MetadataDB:
         self.db_path = db_path
         self._init_schema()
 
-    # -- internal helpers ---------------------------------------------------
+    
 
     def _connect(self) -> sqlite3.Connection:
         conn = sqlite3.connect(self.db_path)
@@ -103,7 +103,7 @@ class MetadataDB:
             )
         logger.info("SQLite schema initialised at %s", self.db_path)
 
-    # -- public API ---------------------------------------------------------
+    
 
     def upsert_paper(
         self,
@@ -547,7 +547,7 @@ def smart_chunk(
             )
             chunk_counter += 1
 
-    # ---- second pass: split oversized chunks with overlap ----
+    
     final_chunks: list[dict] = []
     for ch in chunks:
         text = ch["text"]
@@ -641,7 +641,7 @@ class HybridRetriever:
         self.bm25_ids: list[str] = []
         self._bm25 = None
 
-    # -- BM25 indexing -------------------------------------------------------
+    
 
     def index_bm25(self, texts: list[str], chunk_ids: list[str]) -> None:
         """(Re)build the BM25 index.  Called after new chunks are added."""
@@ -667,7 +667,7 @@ class HybridRetriever:
         ranked = sorted(enumerate(scores), key=lambda x: x[1], reverse=True)[:top_k]
         return [{"chunk_id": self.bm25_ids[i], "score": float(s)} for i, s in ranked if s > 0]
 
-    # -- Dense search -------------------------------------------------------
+    
 
     #def dense_search(self, query: str, top_k: int = 10) -> list[dict]:
     def dense_search(self, query: str, top_k: int = 3) -> list[dict]:
@@ -676,7 +676,7 @@ class HybridRetriever:
         vs = get_vector_store()
         return vs.search(q_vec, limit=top_k)
 
-    # -- Reciprocal Rank Fusion ---------------------------------------------
+    
 
     @staticmethod
     def rrf(
@@ -713,7 +713,7 @@ class HybridRetriever:
             fused.append(entry)
         return fused
 
-    # -- Full hybrid search --------------------------------------------------
+    
 
     def search(self, query: str, top_k: int = 5) -> list[dict]:
         """Run hybrid search and return the top-k fused results."""
@@ -963,7 +963,7 @@ def _sidebar() -> None:
         st.caption("Built with ❤️ for GenAI interviews")
 
 
-# -- Dashboard --------------------------------------------------------------
+
 
 def page_dashboard() -> None:
     st.header("📊 Dashboard")
@@ -1009,7 +1009,7 @@ def page_dashboard() -> None:
     )
 
 
-# -- Ingest Papers ----------------------------------------------------------
+
 
 def page_ingest() -> None:
     st.header("📥 Ingest Papers")
@@ -1038,7 +1038,7 @@ def page_ingest() -> None:
                 st.error("Ingestion failed. Could not process the PDF.")
 
 
-# -- Ask Questions ----------------------------------------------------------
+
 
 def page_ask() -> None:
     st.header("❓ Ask Questions")
@@ -1115,7 +1115,7 @@ def page_ask() -> None:
             st.markdown(f"{i}. **{h['query']}** — {h['num_sources']} sources")
 
 
-# -- Literature Review ------------------------------------------------------
+
 
 def page_literature_review() -> None:
     st.header("📚 Literature Review")
@@ -1193,7 +1193,7 @@ def page_literature_review() -> None:
                 st.markdown(f"- **{p['title']}** — {p.get('authors', 'N/A')}")
 
 
-# -- Compare Papers ---------------------------------------------------------
+
 
 def page_compare() -> None:
     st.header("⚖️ Compare Papers")
