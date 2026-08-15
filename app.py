@@ -26,7 +26,7 @@ class AppConfig:
     """Centralised configuration with sensible defaults."""
 
     groq_api_key: str = ""
-    groq_model: str = "llama-3.1-8b-instant"
+    groq_model: str = "openai/gpt-oss-20b"
     embedding_model: str = "all-MiniLM-L6-v2"
     qdrant_path: str = ""
     sqlite_path: str = ""
@@ -996,7 +996,7 @@ def page_dashboard() -> None:
         """
         | Component | Technology |
         |---|---|
-        | LLM | Groq — llama-3.1-8b-instant |
+        | LLM | Groq — openai/gpt-oss-20b |
         | Embeddings | sentence-transformers — all-MiniLM-L6-v2 |
         | Vector DB | Qdrant (local mode) |
         | Metadata DB | SQLite |
